@@ -20,9 +20,9 @@ public:
 
     bool operator!=(const ObjectId &rhs)
     {
-        if ((u != -1 && i != -1) && (rhs->u != -1 && rhs->i != -1))
+        if ((u != -1 && i != -1) && (rhs.u != -1 && rhs.i != -1))
         {
-            return u != rhs->u || i != rhs->i;
+            return u != rhs.u || i != rhs.i;
         }
 
         return true;
@@ -30,7 +30,7 @@ public:
 
     bool operator<(const ObjectId &rhs)
     {
-        return u < rhs->u;
+        return u < rhs.u;
     }
 
     void SetInvalid()
