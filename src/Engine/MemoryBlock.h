@@ -1,6 +1,7 @@
 #include "Debug.h"
 #include <cstring>
 
+// NOTE: This compiles, but we first need to do additional testing to see if it's correct.
 class MemoryBlock
 {
 private:

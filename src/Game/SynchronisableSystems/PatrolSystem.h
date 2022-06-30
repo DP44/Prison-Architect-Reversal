@@ -8,11 +8,3 @@ public:
     PatrolSystem();
     ~PatrolSystem();
 };
-
-PatrolSystem::PatrolSystem()
-{
-}
-
-PatrolSystem::~PatrolSystem()
-{
-}

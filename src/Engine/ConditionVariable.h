@@ -1,29 +1,30 @@
 #include "Mutex.h"
 
+// TODO: Compilation test.
 class ConditionVariable
 {
 private:
-    pthread_cond_t m_threadCond;
+    pthread_cond_t *m_threadCond;
 
 public:
     ConditionVariable()
     {
-        pthread_cond_init(&m_threadCond, NULL);
+        pthread_cond_init(m_threadCond, NULL);
     }
 
     ~ConditionVariable()
     {
-        pthread_cond_destroy(&m_threadCond);
+        pthread_cond_destroy(m_threadCond);
     }
 
     void SignalAll()
     {
-        pthread_cond_broadcast(&m_threadCond);
+        pthread_cond_broadcast(m_threadCond);
     }
     
     void SignalOne()
     {
-        pthread_cond_signal(&m_threadCond);
+        pthread_cond_signal(m_threadCond);
     }
     
     void Wait(Mutex *mutex, int waitAmount)
@@ -33,7 +34,7 @@ public:
 
         if (waitAmount < 0)
         {
-            pthread_cond_wait(&m_threadCond, &mutex->m_thread);
+            pthread_cond_wait(m_threadCond, &mutex->m_thread);
         }
         else
         {
@@ -47,7 +48,7 @@ public:
                 abstime.tv_sec++;
             }
 
-            pthread_cond_timedwait(&m_threadCond, &mutex->m_thread, &abstime);
+            pthread_cond_timedwait(m_threadCond, &mutex->m_thread, &abstime);
         }
     }
 };

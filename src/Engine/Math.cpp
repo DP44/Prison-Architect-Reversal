@@ -1,8 +1,8 @@
 #include "Math.h"
 
 bool Math::DoesLineIntersect(const Vector2 &a1, const Vector2 &a2,
-                       const Vector2 &a3, const Vector2 &a4,
-                       Vector2 *intersection)
+                             const Vector2 &a3, const Vector2 &a4,
+                             Vector2 *intersection)
 {
     float v14; // xmm3_4
     float v17; // xmm0_4

@@ -11,7 +11,7 @@ Informant::Informant()
     m_timer = 0f;
     m_coverage = 0f;
 
-    m_prisoner->RegisterData(&m_dataRegistry, "Prisoner.i", "Prisoner.u");
+    m_dataRegistry->RegisterData(&m_prisoner, "Prisoner.i", "Prisoner.u");
     m_dataRegistry->RegisterData("State", &m_state, false);
     m_dataRegistry->RegisterData("Suspicion", &m_suspicion, false);
     m_dataRegistry->RegisterData("Timer", &m_timer, false);
@@ -25,7 +25,7 @@ void Informant::ChangeSuspicion(float suspicion)
 {
     float newSuspicion = suspicion + m_suspicion;
 
-    if (100f < newSuspicion) 
+    if (100f < newSuspicion)
     {
         m_suspicion = 100f;
     }
@@ -70,12 +70,10 @@ InformantSystem::InformantSystem() : SynchronisableSystem("InformantSystem")
 
 InformantSystem::~InformantSystem()
 {
-
 }
 
 Informant *InformantSystem::GetInformant(const ObjectId &informantId)
 {
-
 }
 
 int InformantSystem::CountActiveInformants()
@@ -90,7 +88,7 @@ int InformantSystem::CountActiveInformants()
     for (int i = 0; i < m_informants.size; i++)
     {
         Informant *informant = m_informants.field0_0x0;
-        
+
         if (informant != NULL && informant->m_state == 2)
         {
             numActiveInformants++;
@@ -149,7 +147,7 @@ bool InformantSystem::IsRecruitable(const ObjectId &informantId)
     {
         MisconductReport *report = g_app->m_world->m_misconductSystem->GetReport(prisoner);
         float punishmentAmount = 0.0;
-        
+
         if (report != NULL)
         {
             float punishmentRatio = report->CountPunishment(2);
@@ -160,7 +158,7 @@ bool InformantSystem::IsRecruitable(const ObjectId &informantId)
                 punishmentAmount = punishmentRatio + 0.0;
             }
         }
-        
+
         float firstStatusEffectFraction = prisoner->m_statusEffects->GetStatusEffectFrac(1);
         float secondStatusEffectFraction = prisoner->m_statusEffects->GetStatusEffectFrac(5);
         float addictionAmount = prisoner->AddictionAmount(true, true);
@@ -180,22 +178,18 @@ bool InformantSystem::IsInformantInvestigationMode(const ObjectId &informantId)
 
 bool InformantSystem::RequestEscortPrisonerToSecurity(const ObjectId &informantId)
 {
-
 }
 
 void InformantSystem::Update(float a1)
 {
-
 }
 
 void InformantSystem::RenderDebug()
 {
-
 }
 
 float InformantSystem::DetermineCoverage(const ObjectId &informantId)
 {
-
 }
 
 float InformantSystem::DetermineCoverage(float a1, bool a2)
@@ -207,12 +201,10 @@ float InformantSystem::DetermineCoverage(float a1, bool a2)
 
 float InformantSystem::DetermineActiveCoverage()
 {
-
 }
 
 void InformantSystem::ChangeSuspicion(float newSuspicion)
 {
-
 }
 
 void InformantSystem::ChangeSuspicion(const ObjectId &informantId, float newSuspicion)
@@ -232,13 +224,12 @@ void InformantSystem::DeactivateInvestigation(const ObjectId &informantId)
 
 void InformantSystem::RegisterInformant(const ObjectId &informantId)
 {
-
 }
 
 void InformantSystem::DeActivateInformant(const ObjectId &informantId, bool a2)
 {
     Informant *informant = GetInformant(informantId);
-    
+
     if (informant == NULL)
     {
         return;
@@ -251,10 +242,8 @@ void InformantSystem::DeActivateInformant(const ObjectId &informantId, bool a2)
 
 void InformantSystem::ActivateInformant(const ObjectId &informantId, bool a2)
 {
-
 }
 
 void InformantSystem::ReleaseInformant(const ObjectId &informantId)
 {
-
 }
